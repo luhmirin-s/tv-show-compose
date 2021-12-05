@@ -190,6 +190,7 @@ private fun TvShowItemPreview() {
                 name = "Amazing TV Show",
                 overview = "",
                 posterPath = "",
+                backdropPath = "",
                 voteAverage = 4.9,
             )
         ) {}

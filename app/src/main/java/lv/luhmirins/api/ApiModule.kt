@@ -33,6 +33,11 @@ object ApiModule {
     fun posterUrl(): String = "https://www.themoviedb.org/t/p/w440_and_h660_face"
 
     @Provides
+    @Named("backdropPath")
+    fun backdropPath(): String = "https://www.themoviedb.org/t/p/w780"
+
+
+    @Provides
     @Named("httpCacheDir")
     fun httpCacheDir(application: Application): File? = application.cacheDir
 

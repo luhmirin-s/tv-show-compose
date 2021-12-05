@@ -13,6 +13,7 @@ import javax.inject.Named
 class ShowRepository @Inject constructor(
     @Named("tmdbApiKey") private val apiKey: String,
     @Named("posterUrl") private val posterUrl: String,
+    @Named("backdropPath") private val backdropUrl: String,
     private val api: TmdbApi,
 ) {
 
@@ -33,6 +34,7 @@ class ShowRepository @Inject constructor(
                 name = showResponse.name,
                 overview = showResponse.overview,
                 posterPath = showResponse.poster_path?.let { posterUrl + it }.orEmpty(),
+                backdropPath = showResponse.backdrop_path?.let { backdropUrl + it }.orEmpty(),
                 voteAverage = showResponse.vote_average,
             )
         }
