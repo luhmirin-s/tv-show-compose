@@ -18,12 +18,12 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -31,9 +31,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberImagePainter
-import com.google.accompanist.insets.LocalWindowInsets
-import com.google.accompanist.insets.rememberInsetsPaddingValues
-import com.google.accompanist.insets.ui.TopAppBar
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
@@ -41,7 +38,6 @@ import com.google.accompanist.pager.rememberPagerState
 import lv.luhmirins.domain.model.ShowId
 import lv.luhmirins.domain.model.TvShow
 import lv.luhmirins.ui.components.LoadingView
-import lv.luhmirins.ui.theme.Orange
 
 
 @Composable
@@ -65,10 +61,6 @@ private fun ShowDetailsScreen(
         topBar = {
             TopAppBar(
                 title = {},
-                contentPadding = rememberInsetsPaddingValues(
-                    LocalWindowInsets.current.statusBars,
-                    applyBottom = false,
-                ),
                 navigationIcon = {
                     IconButton(onClick = onNavigateUp) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
@@ -114,7 +106,7 @@ private fun TvShowDetails(tvShow: TvShow) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(200.dp)
-                .background(Color.Red)
+                .background(MaterialTheme.colors.primaryVariant.copy(alpha = 0.3f))
         )
         Row(
             modifier = Modifier
@@ -127,7 +119,7 @@ private fun TvShowDetails(tvShow: TvShow) {
                 maxLines = 1,
                 style = MaterialTheme.typography.h4.copy(
                     fontWeight = FontWeight.Bold,
-                    color = Orange,
+                    color = MaterialTheme.colors.secondary,
                 ),
             )
             Spacer(modifier = Modifier.width(16.dp))

@@ -19,6 +19,7 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,17 +32,12 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.rememberImagePainter
-import com.google.accompanist.insets.LocalWindowInsets
-import com.google.accompanist.insets.rememberInsetsPaddingValues
-import com.google.accompanist.insets.ui.TopAppBar
 import lv.luhmirins.domain.model.ShowId
 import lv.luhmirins.domain.model.TvShow
 import lv.luhmirins.ui.components.ErrorItem
 import lv.luhmirins.ui.components.LoadingItem
 import lv.luhmirins.ui.components.LoadingView
 import lv.luhmirins.ui.components.items
-import lv.luhmirins.ui.theme.Navy
-import lv.luhmirins.ui.theme.Orange
 import lv.luhmirins.ui.theme.TVShowsTheme
 
 
@@ -64,13 +60,7 @@ private fun ShowListScreen(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(text = "Top rated TV Shows") },
-                contentPadding = rememberInsetsPaddingValues(
-                    LocalWindowInsets.current.statusBars,
-                    applyBottom = false,
-                )
-            )
+            TopAppBar(title = { Text(text = "Top rated TV Shows") })
         }
     ) {
 
@@ -84,9 +74,6 @@ private fun ShowListScreen(
                     start = 8.dp,
                     end = 8.dp,
                 ),
-            contentPadding = rememberInsetsPaddingValues(
-                LocalWindowInsets.current.navigationBars,
-            ),
         ) {
             items(tvShows) { tvShow ->
                 if (tvShow != null) {
@@ -155,9 +142,8 @@ private fun TvShowItem(
                     .align(Alignment.BottomCenter)
                     .fillMaxWidth()
                     .height(64.dp)
-                    .background(Navy.copy(alpha = 0.8f))
+                    .background(MaterialTheme.colors.primaryVariant.copy(alpha = 0.8f))
                     .padding(8.dp),
-
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
@@ -165,7 +151,7 @@ private fun TvShowItem(
                     maxLines = 1,
                     style = MaterialTheme.typography.h6.copy(
                         fontWeight = FontWeight.Bold,
-                        color = Orange,
+                        color = MaterialTheme.colors.secondary,
                     ),
                 )
                 Spacer(modifier = Modifier.width(8.dp))

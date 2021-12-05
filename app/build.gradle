@@ -26,7 +26,7 @@ android {
             useSupportLibrary true
         }
 
-        buildConfigField "String", "tmdbApiKey", "\""+getTmdbApiKey()+"\""
+        buildConfigField "String", "tmdbApiKey", "\"" + getTmdbApiKey() + "\""
     }
 
     buildTypes {
@@ -78,9 +78,6 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$google_dagger"
     implementation "androidx.hilt:hilt-navigation-compose:1.0.0-beta01"
 
-    implementation "com.google.accompanist:accompanist-systemuicontroller:$google_accompanist"
-    implementation "com.google.accompanist:accompanist-insets:$google_accompanist"
-    implementation "com.google.accompanist:accompanist-insets-ui:$google_accompanist"
     implementation "com.google.accompanist:accompanist-navigation-animation:$google_accompanist"
     implementation "com.google.accompanist:accompanist-pager:$google_accompanist"
     implementation "com.google.accompanist:accompanist-pager-indicators:$google_accompanist"
