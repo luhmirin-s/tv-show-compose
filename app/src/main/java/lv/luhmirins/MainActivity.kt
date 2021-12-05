@@ -70,7 +70,7 @@ class MainActivity : ComponentActivity() {
                         ) {
                             ShowListScreen(
                                 navToDetails = {
-                                    navController.navigate("details/$it")
+                                    navController.navigate("details/${it.id}")
                                 }
                             )
                         }

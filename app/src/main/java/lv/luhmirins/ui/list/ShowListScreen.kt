@@ -17,12 +17,13 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.rememberInsetsPaddingValues
 import com.google.accompanist.insets.ui.TopAppBar
+import lv.luhmirins.domain.model.ShowId
 import lv.luhmirins.ui.theme.TVShowsTheme
 
 
 @Composable
 fun ShowListScreen(
-    navToDetails: (id: Long) -> Unit,
+    navToDetails: (id: ShowId) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -45,7 +46,7 @@ fun ShowListScreen(
             Spacer(modifier = Modifier.height(24.dp))
             Button(
                 content = { Text(text = "To details") },
-                onClick = { navToDetails(0L) },
+                onClick = { navToDetails(ShowId(0L)) },
             )
         }
     }
