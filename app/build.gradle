@@ -82,6 +82,8 @@ dependencies {
     implementation "com.google.accompanist:accompanist-insets:$google_accompanist"
     implementation "com.google.accompanist:accompanist-insets-ui:$google_accompanist"
     implementation "com.google.accompanist:accompanist-navigation-animation:$google_accompanist"
+    implementation "com.google.accompanist:accompanist-pager:$google_accompanist"
+    implementation "com.google.accompanist:accompanist-pager-indicators:$google_accompanist"
 
     implementation "androidx.navigation:navigation-compose:2.4.0-beta02"
 

@@ -5,8 +5,8 @@ import kotlinx.coroutines.withContext
 import lv.luhmirins.api.TmdbApi
 import lv.luhmirins.api.model.Page
 import lv.luhmirins.domain.model.ShowId
-import lv.luhmirins.domain.model.TvShowPage
 import lv.luhmirins.domain.model.TvShow
+import lv.luhmirins.domain.model.TvShowPage
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -21,8 +21,21 @@ class ShowRepository @Inject constructor(
         parseResponseToPage(api.getTopRatedShows(apiKey, page))
     }
 
+    suspend fun getShowDetails(showId: ShowId): TvShow = withContext(Dispatchers.IO) {
+        api.getShowDetails(showId.id, apiKey).let { response ->
+            TvShow(
+                id = ShowId(response.id),
+                name = response.name,
+                overview = response.overview,
+                posterPath = response.poster_path?.let { posterUrl + it }.orEmpty(),
+                backdropPath = response.backdrop_path?.let { backdropUrl + it }.orEmpty(),
+                voteAverage = response.vote_average,
+            )
+        }
+    }
+
     suspend fun getSimilarShows(showId: ShowId): TvShowPage = withContext(Dispatchers.IO) {
-        parseResponseToPage(api.getSimilarShows(apiKey, showId.id))
+        parseResponseToPage(api.getSimilarShows(showId.id, apiKey))
     }
 
     private fun parseResponseToPage(response: Page) = TvShowPage(
