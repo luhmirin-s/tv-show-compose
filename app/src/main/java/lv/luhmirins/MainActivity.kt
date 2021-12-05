@@ -17,12 +17,13 @@ import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import dagger.hilt.android.AndroidEntryPoint
 import lv.luhmirins.ui.details.ShowDetailsScreen
 import lv.luhmirins.ui.list.ShowListScreen
 import lv.luhmirins.ui.theme.TVShowsTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
 
     @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
