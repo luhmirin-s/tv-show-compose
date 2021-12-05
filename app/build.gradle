@@ -5,6 +5,12 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
+def getTmdbApiKey() {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    return properties.getProperty("tmdbApiKey");
+}
+
 android {
     compileSdk 31
 
@@ -19,6 +25,8 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        buildConfigField "String", "tmdbApiKey", "\""+getTmdbApiKey()+"\""
     }
 
     buildTypes {
@@ -75,6 +83,15 @@ dependencies {
     implementation "com.google.accompanist:accompanist-navigation-animation:$google_accompanist"
 
     implementation "androidx.navigation:navigation-compose:2.4.0-beta02"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$okHttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp"
+    implementation "com.squareup.moshi:moshi:$moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi"
+    implementation "com.squareup.moshi:moshi-adapters:$moshi"
 
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     testImplementation 'junit:junit:4.13.2'
